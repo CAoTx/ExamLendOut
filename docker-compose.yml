@@ -1,0 +1,36 @@
+version: "3"
+
+services: 
+
+  db:
+    image: db.docker
+    build: ./database
+    ports: 
+      - 3306:3306
+    command: [--default-authentication-plugin=mysql_native_password]
+    env_file:
+      - ./database/.env 
+
+  backend:
+    image: backend.docker
+    build: ./backend
+    ports: 
+      - 8080:8080
+    env_file:
+      - ./database/.env
+    volumes: 
+       - ./backend:/usr/src/app
+
+  frontend:
+    build: ./frontend
+    image: frontend.docker
+    ports: 
+      - 4200:4200
+    env_file:
+      - ./frontend/.env
+    volumes: 
+      - ./frontend/ELOapp:/usr/src/app
+      
+    #Otherwise container is exiting immediately
+    # tty: true
+
