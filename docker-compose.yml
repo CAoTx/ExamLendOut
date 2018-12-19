@@ -17,13 +17,13 @@ services:
     ports: 
       - 8080:8080
     env_file:
-      - ./database/.env
+      - ./backend/.env
     volumes: 
        - ./backend:/usr/src/app
 
   frontend:
-    build: ./frontend
     image: frontend.docker
+    build: ./frontend
     ports: 
       - 4200:4200
     env_file:
