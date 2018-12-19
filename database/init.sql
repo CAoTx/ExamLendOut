@@ -54,3 +54,11 @@ CREATE TABLE user(
     PRIMARY KEY(ID), 
     FOREIGN KEY (id_modul) REFERENCES modul(idr)
     );
+
+CREATE TABLE user_module(
+    id_user int,
+    id_modul int, 
+    PRIMARY KEY(id_user),PRIMARY key(id_modul),
+    FOREIGN KEY (id_user) REFERENCES user(idr),
+    FOREIGN KEY (id_user) REFERENCES modul(idl)
+    );
