@@ -11,7 +11,7 @@ RUN apt-get update \
 
 COPY package*.json ./
 
-RUN npm install  
-
+RUN cd /usr/src/app \
+    && npm install 
 
 CMD [ "npm", "run", "dev" ]
