@@ -3,15 +3,10 @@ FROM node:10
 WORKDIR /usr/src/app
 
 
-RUN apt-get update \
-    && apt-get install -y vim \
-    && apt-get install -y mysql-client \
-    && apt-get install -y procps
-    # && apt-get install -y netcat 
+RUN npm install -g npm
 
-COPY package*.json ./
+COPY package*.json ./usr/src/app
 
-RUN cd /usr/src/app \
-    && npm install 
+RUN npm ci
 
-CMD [ "npm", "run", "dev" ]
+CMD [ "npm" , "dev" ]
