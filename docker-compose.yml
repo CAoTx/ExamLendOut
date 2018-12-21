@@ -20,6 +20,7 @@ services:
       - ./backend/.env
     volumes: 
        - ./backend:/usr/src/app
+       - /usr/src/app/node_modules
 
   frontend:
     image: frontend.docker
@@ -29,7 +30,8 @@ services:
     env_file:
       - ./frontend/.env
     volumes: 
-      - ./frontend/ELOapp:/usr/src/app
+      - ./frontend/ELOapp:/usr/src/app/ELOapp
+      - /usr/src/app/ELOapp/node_modules
       
     #Otherwise container is exiting immediately
     # tty: true
