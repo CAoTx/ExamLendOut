@@ -10,6 +10,8 @@ RUN   socket=/run/mysqld/mysqlx.sock
 # find / -type s \
 
 
-COPY *.sql /usr/src/app
+COPY *.sql /usr/src/app/
+
+CMD mysql -u root -p qwertz  < initneu.sql
 
 # EXPOSE 9009
